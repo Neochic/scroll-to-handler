@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "sourceMap": false,
+    "target": "es5",
+    "outDir": "dist",
+    "removeComments": true,
+    "baseUrl": "src",
+    "lib": [
+      "es2016",
+      "dom"
+    ]
+  }
+}
