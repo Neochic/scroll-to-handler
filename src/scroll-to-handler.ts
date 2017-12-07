@@ -9,7 +9,7 @@ const $body = $("body");
 const $scrollers = $html.add($body);
 const $document = $(document);
 
-let scrollOffsetModifiers: Array<ScrollOffsetModifierInterface> = [];
+let scrollOffsetModifiers: Array<(fn: number, JQuery?) => number> = [];
 
 try {
     let currentHashTarget = $(window.location.hash);
@@ -98,7 +98,7 @@ function applyScrollOffsetModifiers(offset: number, target: JQuery): number {
     return offset;
 }
 
-function addScrollOffsetModifier(modifier: ScrollOffsetModifierInterface): ScrollOffsetRemoverInterface {
+function addScrollOffsetModifier(modifier: (fn: number, JQuery?) => number): () => void {
     scrollOffsetModifiers.push(modifier);
     return function removeScrollOffsetModifier() {
         scrollOffsetModifiers = scrollOffsetModifiers.filter(function (ele) {
